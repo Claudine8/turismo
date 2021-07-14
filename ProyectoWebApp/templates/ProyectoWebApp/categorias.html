@@ -1,0 +1,31 @@
+{% extends "ProyectoWebApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<h1></h1>
+
+{% for producto in productos %}
+<h1>{{ producto.titulo }}</h1>
+<img src="{{ producto.imagen.url }}" alt="" style="width:400px;">
+<h2>{{producto.fecha_creacion }}</h2>
+
+
+
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

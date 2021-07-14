@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+
+
+
+
+<head>
+
+    {% load static %}
+
+    <!-- Bootstrap -->
+    <link href="{% static 'ProyectoWebApp/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+     <!-- Fonts -->
+    
+     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet"> 
+     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+     
+
+    <!-- Styles -->
+    <link href="{% static 'ProyectoWebApp/css/gestion.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+
+  <nav class="navbar navbar-light bg-light">
+    <div class="container">
+      
+  </nav>
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    {% if user.is_authenticated%}
+    <a href="#">@{{ user.username }}</a>
+    <a href="{% url 'logout' %}" class="btn btn-primary">DESCONECTAR</a>
+    {% else %}
+    <a href="{% url 'login' %}" class="btn btn-primary">LOGIN</a>
+    <a href="{% url 'REGISTRO' %}" class="btn btn-primary">REGISTRO</a>
+    {% endif %}
+    <button class="btn btn-primary" type="button">CARRITO</button>
+  </div>
+
+
+<div class="container">
+    <h2> YAGUARETE KAA S.A</h2>
+
+     <!-- Navbar -->
+ <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="{% url 'HOME' %}">Agencia de Viajes</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item {% if request.path == '/' %}active{% endif %} px-lg-4">
+          <a class="nav-link text-uppercase text-expanded" href="{% url 'HOME' %}">HOME</a>
+        </li>
+        
+
+        <li class="nav-item {% if request.path == '/categorias' %}active {% endif %}dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            CATEGORIAS
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{% url 'CATEGORIAS' 1 %}">ARGENTINA</a>
+            <a class="dropdown-item" href="{% url 'CATEGORIAS' 2 %}">CARIBE</a>
+            <a class="dropdown-item" href="{% url 'CATEGORIAS' 3 %}">EUROPA</a>
+            <a class="dropdown-item" href="{% url 'CATEGORIAS' 4 %}">EMIRATOS</a>
+            
+          </div>
+        </li>
+
+
+        <li class="nav-item {% if request.path == '/acerca' %}active {% endif %} px-lg-4">
+          <a class="nav-link text-uppercase text-expanded" href="{% url 'ACERCA DE...' %}">ACERCA DE...</a>
+        </li>
+        <li class="nav-item {% if request.path == '/contacto' %}active {% endif %}px-lg-4">
+          <a class="nav-link text-uppercase text-expanded" href="{% url 'CONTACTO' %}">CONTACTO</a>
+        </li>
+        <li class="nav-item {% if request.path == '/nuevo' %}disabled {% endif %}px-lg-4">
+          <a class="nav-link text-uppercase text-expanded" href="{% url 'NUEVO PRODUCTO' %}">NUEVO PRODUCTO</a>
+        </li>
+       </ul>
+
+
+       
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+        <form method="get">
+      </form>
+      </form>
+    </div>
+  </div>
+
+
+  
+</nav><br><br>
+
+
+
+
+
+<!--Contenido cambiante-->
+ {% block content %}
+
+
+ {% endblock %}
+
+    
+ 
+  <!-- Footer -->
+    <footer class="footer text-faded text-center py-5">
+      <div class="container">
+        <p class="m-0">
+	        <a href="#" class="link">
+	          <span class="fa-stack fa-lg">
+	            <i class="fa fa-circle fa-stack-2x"></i>
+	            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+	          </span>
+	        </a>
+	        <a href="#" class="link">
+	          <span class="fa-stack fa-lg">
+	            <i class="fa fa-circle fa-stack-2x"></i>
+	            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+	          </span>
+	        </a>
+	        <a href="#" class="link">
+	          <span class="fa-stack fa-lg">
+	            <i class="fa fa-circle fa-stack-2x"></i>
+	            <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+	          </span>
+	        </a>
+	    </p>
+        <p class="m-0 mbt">
+        	<a href="sample.html" class="link">Política de privacidad</a> ·
+        	<a href="sample.html" class="link">Aviso legal</a> ·
+        	<a href="sample.html" class="link">Cookies</a>
+		</p>
+        <p class="m-0 mbt1">&copy; JAGUARETE KAA S.A - AGENCIA DE VIAJES Y TURISMO 2021</p>
+      </div>
+	</footer>
+
+    <!-- Bootstrap -->
+    <script src="{% static 'ProyectoWebApp/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'ProyectoWebApp/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+
+</html>

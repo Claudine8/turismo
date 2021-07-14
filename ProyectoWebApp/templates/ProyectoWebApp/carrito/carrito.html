@@ -1,0 +1,59 @@
+{% extends 'ProyectoWebApp/base.html' %}
+
+{% block content %}
+
+<br>
+
+<div class="container">
+	<h2>Carrito</h2>
+	<h3>@{{ user.username }}</h3>
+
+	<table class="table table-hover">
+
+		<thead>
+			<tr>
+				<th scope="col" class="text-center">PRODUCTO</th>
+				<th scope="col" class="text-center">PRECIO</th>
+				<th scope="col" class="text-center">CANTIDAD</th>
+				<th scope="col" class="text-center">SUBTOTAL</th>
+				<th scope="col" class="text-center">ELIMINAR</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{% if request.session.carrito.items %}
+			{% for key,value in request.session.carrito.items %}
+			<tr class="detalle">
+				<th scope="row" class="text-center"><a href="{% url 'visualizar' value.producto_id %}" class="text-decoration-none">{{ value.titulo}}</a></th>
+				<td class="text-center">$ {{ value.precio }}</td>
+				<td class="text-center">
+					<a href="{% url 'restar_producto' value.producto_id %}" class="btn btn-danger">-</a>
+					&nbsp&nbsp{{ value.cantidad }}&nbsp&nbsp
+					<a href="{% url 'agregar_producto' value.producto_id %}" class="btn btn-success">+</a>
+				</td>
+				<td class="text-center">$ {{ value.subtotal }}</td>
+				<td class="text-center">
+					<a href="{% url 'eliminar_producto' value.producto_id %}" class="btn btn-danger">X</a>
+				</td>
+			</tr>
+			{% endfor %}
+			{% else %}
+			<td colspan="5" class="text-center font-weight-bolder h4">Carrito vacío, compra algún producto</td>
+			{% endif %}
+		</tbody>
+
+		<tfoot>
+			<tr>
+				<td colspan="5" class="text-right font-weight-bolder h3">
+					TOTAL: $ {{ importe_total_carrito }}
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+
+	<a href="{% url 'vaciar_carrito' %}" class="btn btn-info">VACIAR CARRITO</a>
+	<a href="#" class="btn btn-info">FINALIZAR COMPRA</a>
+</div>
+<br>
+
+{% endblock %}

@@ -1,0 +1,115 @@
+{% extends "ProyectoWebApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+
+
+
+
+
+
+
+ 
+
+
+<!--carrusel-->
+  
+
+  <div id="demo" class="carousel slide" data-ride="carousel">
+    <ul class="carousel-indicators">
+      <li data-target="#demo" data-slide-to="0" class="active"></li>
+      <li data-target="#demo" data-slide-to="1"></li>
+      <li data-target="#demo" data-slide-to="2"></li>
+    </ul>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static 'ProyectoWebApp/img/cataratas1.jpg' %}" alt="cataratas" width="1100" height="500">
+        <div class="carousel-caption">
+          <h1>CATARATAS DE IGUAZU</h1>
+          <p>VIVI TU EXPERIENCIA INOLVIDABLE</p>
+          
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'ProyectoWebApp/img/caribe.jpg' %}" alt="caribe" width="1100" height="500">
+        <div class="carousel-caption">
+          <h1>CARIBE</h1>
+          <p>VIVI TU EXPERIENCIA INOLVIDABLE</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'ProyectoWebApp/img/europa.jpg' %}" alt="europa" width="1100" height="500">
+        <div class="carousel-caption">
+          <h1>EUROPA</h1>
+          <p>VIVI TU EXPERIENCIA INOLVIDABLE</p>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+  </div>
+
+
+
+  <h1 class="jaguarete-font jaguarete-color margin-top-none"><span><p>descubrí tu lugar en el mundo</p></span></h1>
+</div>
+
+<!--cards-->
+
+<div class="container">
+  
+  <div class="row d-flex justify-content-between">
+
+   {% for producto in tres_productos %}
+  <div class="card m-3 imagen" style="width:21rem">
+    <img src="{{producto.imagen.url }}" class="card-img-top" alt="...">
+    <div class="card-body">
+    <h5 class="card-title">{{producto.titulo}}</h5>
+  </div>
+    <div class="card-footer">
+        <a href="{% url 'VISUALIZAR' producto.id %}" class="btn btn-primary">VER</a>
+      </div>
+    </div>
+
+    {% endfor %}
+    </div>
+  
+
+<!--lista-->
+
+<div class="list-group">
+  <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+    Hablemos de viajar
+  </a>
+  {% for producto in resto_productos %}
+  <a href="{% url 'VISUALIZAR' producto.id %}" class="list-group-item list-group-item-action">{{ producto.titulo }}</a>
+  {% endfor %}
+  
+</div>
+</div>
+<br>
+
+
+
+
+{% endblock %}
+
+
+
+
+
+    
+
+
+
+
+
+
+
+ 

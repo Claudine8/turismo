@@ -1,0 +1,36 @@
+{% extends "ProyectoWebApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+
+
+<div class="row col-12 col-md-6 offset-md-3">
+    <div class="card">
+        <div class="card-body">
+            {% for p in producto %}
+             <h2>{{p.titulo}}</h2>
+              <div class="d-flex flex-column flex-lg-row detalle">
+               <div>
+                <img src="{{ p.imagen.url}}" alt="" style="height:400px; width:100%; margin-right:10px;">
+               </div>
+             </div>
+             {{ p.categoria }}
+             <h3>>{{ p.descripcion }}</h3>
+        </div>
+        <h4>Precio: {{ p.precio }}</h4>
+        <h3>Oferta: {{ p.precio_oferta }}</h3>
+        <a href="#" class="btn btn-primary">COMPRAR</a>
+    </div>
+</div>
+</div>
+</div>
+
+
+
+
+{% endfor %}
+
+
+{% endblock %}
